@@ -1,5 +1,5 @@
 import Slider from "react-slick";
-import Button from "./Button";
+import Button from "../Shared/Button";
 import Image1 from "/hero/headphone2.png";
 import Image2 from "/category/vr2.png";
 import Image3 from "/category/macbook2.png";
@@ -28,7 +28,7 @@ const HeroData = [
   },
 ];
 
-const Hero = () => {
+const Hero = ({ handleOrderPopup }) => {
   let settings = {
     dots: false,
     arrows: false,
@@ -43,7 +43,7 @@ const Hero = () => {
   };
   return (
     // Maybe add container class or NOT
-    <div className=" sm:p-12 p-4">
+    <div className=" sm:p-12 p-4 mt-5 mb-10">
       <div className="overflow-hidden rounded-3xl min-h-137.5 lg:min-h-162.5 bg-linear-to-r from-gray-300/80 to-gray-100 dark:from-gray-900 dark:to-gray-800 dark:text-white flex justify-center items-center shadow-xl">
         <div className="container lg:p-12 p-4 pb-8 lg:pb-0 ">
           {/* Hero Section */}
@@ -53,26 +53,48 @@ const Hero = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 overflow-hidden">
                   {/* Text Content Section */}
                   <div className="flex flex-col justify-center gap-4 lg:pl-3 pt-12 lg:pt-0 text-center lg:text-left order-2 lg:order-1 relative z-10 ">
-                    <h1 className="text-2xl lg:text-2xl font-bold">
+                    <h1
+                      data-aos="zoom-out"
+                      data-aos-duration="500"
+                      data-aos-once="true"
+                      className="text-3xl md:text-5xl lg:text-6xl font-bold"
+                    >
                       {data.subtitle}
                     </h1>
-                    <h1 className="text-5xl lg:text-7xl font-bold">
+                    <h1
+                      data-aos="zoom-out"
+                      data-aos-duration="500"
+                      data-aos-once="true"
+                      className="text-5xl md:text-6xl lg:text-7xl font-bold"
+                    >
                       {data.title}
                     </h1>
-                    <h1 className="text-5xl uppercase text-white dark:text-white/5 sm:text-[80px] md:text-[100px] xl:text-[150px] font-bold">
+                    <h1
+                      data-aos="zoom-out"
+                      data-aos-duration="500"
+                      data-aos-once="true"
+                      className="text-5xl uppercase text-white dark:text-white/5 sm:text-[80px] md:text-[100px] xl:text-[150px] font-bold"
+                    >
                       {data.title2}
                     </h1>
-                    <div>
+                    <div
+                      data-aos="fade-up"
+                      data-aos-offset="0"
+                      data-aos-duration="500"
+                      data-aos-delay="300"
+                    >
                       <Button
                         text="Shop By Category"
                         bgColor="bg-primary"
                         textColor="text-white"
+                        handler={handleOrderPopup}
                       ></Button>
                     </div>
                   </div>
                   {/* Img Section */}
                   <div className="order-1 lg:order-2">
-                    <div>
+                    <div data-aos="zoom-in"
+                      data-aos-once="true" className="relative z-10">
                       <img
                         src={data.img}
                         alt="Product Img"

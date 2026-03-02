@@ -15,7 +15,7 @@ const ServiceData = [
       <FaCheckCircle className="text-4xl md:text-5xl text-green-500 drop-shadow-lg"></FaCheckCircle>
     ),
     title: "Safe Money",
-    desription: "30 Days Money Back Gurantee",
+    desription: "30-Day Money Back Gurantee",
   },
   {
     id: 3,
@@ -36,10 +36,10 @@ const ServiceData = [
 const Services = () => {
   return (
     <div>
-      <div className="sm:p-12 p-4 mt-10 md:my-10">
+      <div className="sm:p-12 p-4 mt-15">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 gap-y-8">
           {ServiceData.map((data) => (
-            <div className="flex flex-col items-start gap-1 xl:gap-2 p-4 rounded-lg dark:bg-gray-800" key={data.id}>
+            <div className="flex flex-col items-start gap-1 xl:gap-2 p-4 rounded-lg dark:bg-gray-800 shadow-xl hover:scale-105 duration-300" key={data.id}>
                 {data.icon}
                 <h1 className="lg:text-xl font-bold">{data.title}</h1>
                 <h1 className="text-gray-400 text-sm">{data.desription}</h1>

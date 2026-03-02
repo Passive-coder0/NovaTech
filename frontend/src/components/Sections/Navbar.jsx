@@ -3,22 +3,21 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa";
 import DarkMode from "./DarkMode";
 
-
 const DropdownLinks = [
   {
     id: 1,
-    name: "Trending Products",
-    link: "/#trending-products",
+    name: "Featured Products",
+    link: "#featured",
   },
   {
     id: 2,
-    name: "Best Selling",
-    link: "/#best-selling",
+    name: "Services",
+    link: "#services",
   },
   {
     id: 3,
-    name: "Top Rated",
-    link: "/#top-rated",
+    name: "Latest News",
+    link: "#latest",
   },
 ];
 const MenuLinks = [
@@ -34,17 +33,12 @@ const MenuLinks = [
   },
   {
     id: 3,
-    name: "About",
-    link: "/#about",
-  },
-  {
-    id: 4,
     name: "Blogs",
     link: "/#blogs",
   },
 ];
 
-const Navbar = () => {
+const Navbar = ({ handleOrderPopup }) => {
   return (
     <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
       <div className="py-1">
@@ -74,15 +68,19 @@ const Navbar = () => {
 
                 {/* Dropdown */}
                 <li className="relative cursor-pointer group">
-                  <a href="#" className="flex items-center gap-0.5 font-semibold text-gray-500 dark:hover:text-white py-2">
+                  <a
+                    href="#"
+                    className="flex items-center gap-0.5 font-semibold text-gray-500 dark:hover:text-white py-2"
+                  >
                     Quick Links
-                    <span><FaCaretDown className="group-hover:rotate-180 duration-300" /></span>
+                    <span>
+                      <FaCaretDown className="group-hover:rotate-180 duration-300" />
+                    </span>
                   </a>
-                   {/* Dropdown Links */}
+                  {/* Dropdown Links */}
                   <div className="absolute z-9999 hidden group-hover:block w-50 rounded-md bg-white shadow-md dark:bg-gray-900 p-2 text-black dark:text-white">
-                   <ul className="space-y-2">
-                    {
-                      DropdownLinks.map((data, index) => (
+                    <ul className="space-y-2">
+                      {DropdownLinks.map((data, index) => (
                         <li key={index}>
                           <a
                             href={data.link}
@@ -91,10 +89,8 @@ const Navbar = () => {
                             {data.name}
                           </a>
                         </li>
-                      ))
-                    }
-                   </ul>
-
+                      ))}
+                    </ul>
                   </div>
                 </li>
               </ul>
@@ -103,18 +99,11 @@ const Navbar = () => {
 
           {/* Navbar Right Section */}
           <div className="flex justify-between items-center gap-4">
-            {/* Search Bar Section */}
-            <div className="relative group hidden sm:block">
-              <input
-                type="text"
-                placeholder="Search"
-                className="w-0 group-hover:w-75 transition-[width] duration-700 rounded-full group-hover:border group-hover:border-gray-500 px-3 py-1 focus:outline-none dark:border-gray-800 dark:bg-gray-900 group-hover:dark:bg-gray-800"
-              />
-              <IoMdSearch className="text-xl text-gray-600 group-hover:text-primary transition-[color] duration-300 dark:text-gray-400 absolute top-1/3 -translate-y-0.5 right-3 hover:cursor-pointer" />
-            </div>
-
             {/* Order Button Section */}
-            <button className="relative p-3 cursor-pointer duration-300 transform hover:scale-110">
+            <button
+              onClick={handleOrderPopup}
+              className="relative p-3 cursor-pointer duration-300 transform hover:scale-110"
+            >
               <FaShoppingCart className="text-xl text-gray-600 dark:text-gray-400 drop-shadow-sm" />
               <div className="w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs">
                 4
