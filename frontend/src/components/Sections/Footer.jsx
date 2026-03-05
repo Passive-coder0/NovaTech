@@ -42,13 +42,23 @@ const Footer = () => {
           {/* Company Details */}
           <div className="py-8 px-4">
             <a
-              href="#"
-              className="text-primary font-semibold tracking-widest text-2xl uppercase sm:text-3xl"
+              href="/#"
+              className="cursor-pointer"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
             >
-              Virtual Shop
+              <span
+                className="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest bg-linear-to-r from-primary to-brandBlue bg-clip-text text-transparent drop-shadow-sm"
+              >
+                Nova
+              </span>
+              <span
+                className="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-gray-800 dark:text-gray-100"
+              >
+                Tech
+              </span>
             </a>
             <p className="hidden md:block text-gray-700 dark:text-white/70 lg:pr-24 pt-3">
-              Your one-stop shop for the latest tech gadgets, from smartphones to smart home devices—at competitive prices.
+              Your one stop shop for the latest tech gadgets at competitive prices.
             </p>
             <p className="text-gray-700 dark:text-gray-500 mt-4">
               All rights reserved © 2026 Virtual Shop. Designed by Mohamed Hamed.

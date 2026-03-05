@@ -49,9 +49,19 @@ const Navbar = ({ handleOrderPopup, quickLinks }) => {
           <div className="flex justify-between items-center gap-4">
             <a
               href="/#"
-              className="text-primary font-semibold tracking-widest text-2xl uppercase sm:text-3xl cursor-pointer"
+              className="cursor-pointer"
+              style={{ fontFamily: "'Poppins', sans-serif" }}
             >
-              Virtual Shop
+              <span
+                className="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest bg-linear-to-r from-primary to-brandBlue bg-clip-text text-transparent drop-shadow-sm"
+              >
+                Nova
+              </span>
+              <span
+                className="text-2xl sm:text-3xl font-extrabold uppercase tracking-widest text-gray-800 dark:text-gray-100"
+              >
+                Tech
+              </span>
             </a>
             {/* Menu Items */}
             <div className="hidden lg:block">
