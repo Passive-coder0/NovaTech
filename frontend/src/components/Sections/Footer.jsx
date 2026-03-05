@@ -47,12 +47,11 @@ const Footer = () => {
             >
               Virtual Shop
             </a>
-            <p className="text-gray-600 dark:text-white/70 lg:pr-24 pt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae,
-              ipsam voluptas. Facere?
+            <p className="hidden md:block text-gray-700 dark:text-white/70 lg:pr-24 pt-3">
+              Your one-stop shop for the latest tech gadgets, from smartphones to smart home devices—at competitive prices.
             </p>
-            <p className="text-gray-500 mt-4">
-              Made with React and Tailwindcss
+            <p className="text-gray-700 dark:text-gray-500 mt-4">
+              All rights reserved © 2026 Virtual Shop. Designed by Mohamed Hamed.
             </p>
           </div>
 
@@ -86,7 +85,7 @@ const Footer = () => {
                   <li key={index}>
                     <a
                       href={data.link}
-                      className="text-gray-600 dark:text-gray-400 hover:dark:text-white hover:text-black duration-300"
+                      className="text-gray-700 dark:text-gray-400 hover:dark:text-white hover:text-black duration-300"
                     >
                       {data.name}
                     </a>

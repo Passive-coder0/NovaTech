@@ -1,4 +1,5 @@
 import { IoMdSearch } from "react-icons/io";
+import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa";
 import DarkMode from "./DarkMode";
@@ -6,13 +7,13 @@ import DarkMode from "./DarkMode";
 const DropdownLinks = [
   {
     id: 1,
-    name: "Featured Products",
-    link: "#featured",
+    name: "Services",
+    link: "#services",
   },
   {
     id: 2,
-    name: "Services",
-    link: "#services",
+    name: "Featured Products",
+    link: "#featured",
   },
   {
     id: 3,
@@ -29,16 +30,16 @@ const MenuLinks = [
   {
     id: 2,
     name: "Shop",
-    link: "/#shop",
+    link: "/shop",
   },
   {
     id: 3,
     name: "Blogs",
-    link: "/#blogs",
+    link: "/blogs",
   },
 ];
 
-const Navbar = ({ handleOrderPopup }) => {
+const Navbar = ({ handleOrderPopup, quickLinks }) => {
   return (
     <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40">
       <div className="py-1">
@@ -47,8 +48,8 @@ const Navbar = ({ handleOrderPopup }) => {
           {/* Logos and links Section */}
           <div className="flex justify-between items-center gap-4">
             <a
-              href="#"
-              className="text-primary font-semibold tracking-widest text-2xl uppercase sm:text-3xl"
+              href="/#"
+              className="text-primary font-semibold tracking-widest text-2xl uppercase sm:text-3xl cursor-pointer"
             >
               Virtual Shop
             </a>
@@ -57,42 +58,44 @@ const Navbar = ({ handleOrderPopup }) => {
               <ul className="flex items-center gap-4 ">
                 {MenuLinks.map((data, index) => (
                   <li key={index}>
-                    <a
+                    <Link
                       className="inline-block px-4 font-semibold text-gray-500 hover:text-black dark:hover:text-white duration-200"
-                      href={data.link}
+                      to={data.link}
                     >
                       {data.name}
-                    </a>
+                    </Link>
                   </li>
                 ))}
 
                 {/* Dropdown */}
-                <li className="relative cursor-pointer group">
-                  <a
-                    href="#"
-                    className="flex items-center gap-0.5 font-semibold text-gray-500 dark:hover:text-white py-2"
-                  >
-                    Quick Links
-                    <span>
-                      <FaCaretDown className="group-hover:rotate-180 duration-300" />
-                    </span>
-                  </a>
-                  {/* Dropdown Links */}
-                  <div className="absolute z-9999 hidden group-hover:block w-50 rounded-md bg-white shadow-md dark:bg-gray-900 p-2 text-black dark:text-white">
-                    <ul className="space-y-2">
-                      {DropdownLinks.map((data, index) => (
-                        <li key={index}>
-                          <a
-                            href={data.link}
-                            className="text-gray-500 hover:text-black dark:hover:text-white p-2 hover:bg-primary/20 duration-200 inline-block w-full rounded-md font-semibold"
-                          >
-                            {data.name}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </li>
+                {quickLinks && (
+                  <li className="relative cursor-pointer group">
+                    <a
+                      href="#"
+                      className="flex items-center gap-0.5 font-semibold text-gray-500 dark:hover:text-white py-2"
+                    >
+                      Quick Links
+                      <span>
+                        <FaCaretDown className="group-hover:rotate-180 duration-300" />
+                      </span>
+                    </a>
+                    {/* Dropdown Links */}
+                    <div className="absolute z-9999 hidden group-hover:block w-50 rounded-md bg-white shadow-md dark:bg-gray-900 p-2 text-black dark:text-white">
+                      <ul className="space-y-2">
+                        {DropdownLinks.map((data, index) => (
+                          <li key={index}>
+                            <a
+                              href={data.link}
+                              className="text-gray-500 hover:text-black dark:hover:text-white p-2 hover:bg-primary/20 duration-200 inline-block w-full rounded-md font-semibold"
+                            >
+                              {data.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
@@ -106,7 +109,7 @@ const Navbar = ({ handleOrderPopup }) => {
             >
               <FaShoppingCart className="text-xl text-gray-600 dark:text-gray-400 drop-shadow-sm" />
               <div className="w-4 h-4 bg-red-500 text-white rounded-full absolute top-0 right-0 flex items-center justify-center text-xs">
-                4
+                3
               </div>
             </button>
 

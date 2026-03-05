@@ -1,12 +1,14 @@
 import Heading from "../Shared/Heading";
 import img1 from "/blogs/blog-1.jpg";
-import img2 from "/blogs/blog-2.jpg";
+import img2 from "/blogs/blog-2.png";
 import img3 from "/blogs/blog-3.jpg";
+import {Link} from "react-router-dom";
 
 const BlogData = [
   {
     id:1,
     title: "How to Choose the perfect Smart Watch",
+    link: "/blogs/1",
     subtitle:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     published: "Jan 20, 2026 by Mary",
@@ -15,6 +17,7 @@ const BlogData = [
   {
     id:2,
     title: "How to Choose the Best Gadget for Your Lifestyle",
+    link: "/blogs/2",
     subtitle:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     published: "Feb 2, 2026 by John",
@@ -23,6 +26,7 @@ const BlogData = [
   {
     id:3,
     title: "How to Choose the perfect VR Headset",
+    link: "/blogs/3",
     subtitle:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     published: "Feb 17, 2026 by Mohamed",
@@ -47,7 +51,8 @@ const Blogs = () => {
             <div key={data.id} className="bg-white dark:bg-gray-900">
                 {/* Img Section */}
               <div className="overflow-hidden rounded-2xl mb-2">
-                <img className="w-full h-55 object-cover rounded-2xl hover:scale-105 duration-500" src={data.img} alt="Blog Img" />
+                <Link to={data.link}>
+                <img className="w-full h-55 object-cover rounded-2xl hover:scale-105 duration-500 cursor-pointer" src={data.img} alt="Blog Img" /></Link>
               </div>
               {/* Text Secction */}
               <div className="space-y-2">

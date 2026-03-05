@@ -18,13 +18,7 @@ import "aos/dist/aos.css";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function Home() {
-  const [orderPopup, setOrderPopup] = useState(false);
-
-  const handleOrderPopup = () => {
-    setOrderPopup(!orderPopup);
-  };
-
+function Home({ orderPopup, handleOrderPopup }) {
   useEffect(() => {
     AOS.init({
       duration: 800,
@@ -40,7 +34,7 @@ function Home() {
 
   return (
     <div className="bg-white dark:bg-gray-900 dark:text-white duration-200 overflow-hidden">
-      <Navbar handleOrderPopup={handleOrderPopup}></Navbar>
+      <Navbar handleOrderPopup={handleOrderPopup} quickLinks={true}></Navbar>
       <Hero handleOrderPopup={handleOrderPopup}></Hero>
       <Category></Category>
       <Category2></Category2>

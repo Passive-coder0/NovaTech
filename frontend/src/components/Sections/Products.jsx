@@ -14,7 +14,6 @@ const Products = () => {
 
         {/* Body Section Here */}
         <ProductCards></ProductCards>
-        <ProductCards></ProductCards>
       </div>
     </div>
   );
