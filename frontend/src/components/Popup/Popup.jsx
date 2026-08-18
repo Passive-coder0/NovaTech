@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Button from "../Shared/Button";
 import img1 from "/hero/headphone.png";
 import img2 from "/product/samsung.jpg";
@@ -31,6 +32,21 @@ const Products = [
 
 
 const Popup = ({ orderPopup, handleOrderPopup }) => {
+  const [quantities, setQuantities] = useState(
+    Products.reduce((acc, _, index) => {
+      acc[index] = 1;
+      return acc;
+    }, {})
+  );
+
+  const totalItems = Products.reduce(
+    (sum, _, index) => sum + (quantities[index] ?? 1),
+    0
+  );
+
+  const subtotal = Products.reduce((sum, product, index) => {
+    return sum + product.price * (quantities[index] ?? 1);
+  }, 0);
 
   return (
     <>
@@ -53,7 +69,7 @@ const Popup = ({ orderPopup, handleOrderPopup }) => {
                   {/* Header */}
                   <div className="flex items-center justify-between w-full border-gray-400 border-b pb-6 font-bold text-xl lg:text-2xl">
                     <h2>Shopping Cart</h2>
-                    <h2>3 Items</h2>
+                    <h2>{totalItems} Items</h2>
                   </div>
 
                   {/* Product Section */}
@@ -65,7 +81,11 @@ const Popup = ({ orderPopup, handleOrderPopup }) => {
                       <span>Price</span>
                       <span>Total</span>
                     </div>
-                    <CartItems products={Products}></CartItems>
+                    <CartItems
+                      products={Products}
+                      quantities={quantities}
+                      setQuantities={setQuantities}
+                    />
                   </div>
                 </div>
 
@@ -89,8 +109,8 @@ const Popup = ({ orderPopup, handleOrderPopup }) => {
                 {/* Order Form */}
                 <form className="border-gray-400 border-b pb-8">
                   <div className="flex justify-between font-bold py-6">
-                    <p>Items 3</p>
-                    <p>$475</p>
+                    <p>Items {totalItems}</p>
+                    <p>${subtotal}</p>
                   </div>
                   <div className="flex flex-col justify-between pb-6">
                     <label className="font-bold mb-3" htmlFor="shipping">
@@ -130,7 +150,7 @@ const Popup = ({ orderPopup, handleOrderPopup }) => {
                 </form>
                 <div className="flex justify-between font-bold py-6">
                   <p>Total Cost</p>
-                  <p>$475</p>
+                  <p>${subtotal}</p>
                 </div>
                 <div className="flex justify-center items-center">
                   <Link

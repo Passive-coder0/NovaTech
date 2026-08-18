@@ -1,13 +1,10 @@
-import { useState } from "react";
+const CartItem = ({ product, quantity, onQuantityChange }) => {
+  const decrement = () => onQuantityChange(Math.max(1, quantity - 1));
+  const increment = () => onQuantityChange(quantity + 1);
 
-const CartItem = ({ product }) => {
-  const [value, setvalue] = useState(1);
-
-  const decrement = () => setvalue((q) => Math.max(1, q - 1));
-  const increment = () => setvalue((q) => q + 1);
   const handleChange = (e) => {
     const parsed = parseInt(e.target.value, 10);
-    if (!isNaN(parsed) && parsed >= 1) setvalue(parsed);
+    if (!isNaN(parsed) && parsed >= 1) onQuantityChange(parsed);
   };
 
   return (
@@ -41,7 +38,7 @@ const CartItem = ({ product }) => {
           <input
             type="number"
             min="1"
-            value={value}
+            value={quantity}
             onChange={handleChange}
             className="w-8 md:w-9 text-sm aspect-square text-center bg-gray-100 dark:bg-gray-700 rounded-md py-1 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
@@ -55,18 +52,28 @@ const CartItem = ({ product }) => {
 
         <div className="flex gap-6 md:contents">
           <span className="md:block"><span className="md:hidden text-gray-400 mr-1">Price:</span>${product.price}</span>
-          <span className="md:block font-semibold"><span className="md:hidden text-gray-400 mr-1">Total:</span>${product.price * value}</span>
+          <span className="md:block font-semibold"><span className="md:hidden text-gray-400 mr-1">Total:</span>${product.price * quantity}</span>
         </div>
       </div>
     </div>
   );
 };
 
-const CartItems = ({ products }) => {
+const CartItems = ({ products, quantities, setQuantities }) => {
   return (
     <>
       {products.map((product, index) => (
-        <CartItem key={index} product={product} />
+        <CartItem
+          key={index}
+          product={product}
+          quantity={quantities[index] ?? 1}
+          onQuantityChange={(newQty) =>
+            setQuantities((prev) => ({
+              ...prev,
+              [index]: newQty,
+            }))
+          }
+        />
       ))}
     </>
   );

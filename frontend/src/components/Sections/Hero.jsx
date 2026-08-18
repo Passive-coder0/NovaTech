@@ -1,4 +1,5 @@
 import Slider from "react-slick";
+import { useNavigate } from "react-router-dom";
 import Button from "../Shared/Button";
 import Image1 from "/hero/headphone2.png";
 import Image2 from "/category/vr2.png";
@@ -28,7 +29,9 @@ const HeroData = [
   },
 ];
 
-const Hero = ({ handleOrderPopup }) => {
+const Hero = () => {
+  const navigate = useNavigate();
+
   let settings = {
     dots: false,
     arrows: false,
@@ -87,7 +90,7 @@ const Hero = ({ handleOrderPopup }) => {
                         text="Shop By Category"
                         bgColor="bg-primary"
                         textColor="text-white"
-                        handler={handleOrderPopup}
+                        handler={() => navigate("/shop")}
                       ></Button>
                     </div>
                   </div>

@@ -1,9 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import Button from "../Shared/Button";
 import Image1 from "/category/gaming.png";
 import Image2 from "/category/vr.png";
 import Image3 from "/category/speaker.png";
 
 const Category = () => {
+  const navigate = useNavigate();
+
   return (
     <div>
       {/* Maybe add container class or NOT */}
@@ -22,6 +25,7 @@ const Category = () => {
                   text="Browse"
                   bgColor={"bg-primary"}
                   textColor={"text-white"}
+                  handler={() => navigate("/shop")}
                 ></Button>
               </div>
             </div>
@@ -44,6 +48,7 @@ const Category = () => {
                   text="Browse"
                   bgColor={"bg-white"}
                   textColor={"text-brandGreen"}
+                  handler={() => navigate("/shop")}
                 ></Button>
               </div>
             </div>
@@ -66,6 +71,7 @@ const Category = () => {
                   text="Browse"
                   bgColor={"bg-white"}
                   textColor={"text-brandBlue"}
+                  handler={() => navigate("/shop")}
                 ></Button>
               </div>
             </div>
