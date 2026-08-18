@@ -82,20 +82,15 @@ const Blog = ({ orderPopup, handleOrderPopup }) => {
           <div className="flex items-center gap-4 flex-wrap">
             <p className="text-gray-300 text-xs">
               {featured.published} &nbsp;·&nbsp; by{" "}
-              <span className="font-semibold text-white">{featured.author}</span>
+              <span className="font-semibold text-white">
+                {featured.author}
+              </span>
             </p>
             <button className="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white text-sm font-semibold rounded-full transition-colors cursor-pointer">
               Read Article →
             </button>
           </div>
         </div>
-      </section>
-
-      {/* ── Full Description Strip ── */}
-      <section className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 px-6 sm:px-14 py-8 max-w-5xl mx-auto">
-        <p className="text-gray-600 dark:text-gray-300 text-base leading-8">
-          {featured.subtitle}
-        </p>
       </section>
 
       {/* ── More Articles ── */}
@@ -109,7 +104,10 @@ const Blog = ({ orderPopup, handleOrderPopup }) => {
           {others.map((blog) => (
             <div
               key={blog.id}
-              onClick={() => { setFeatured(blog); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+              onClick={() => {
+                setFeatured(blog);
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               className="group cursor-pointer bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300"
             >
               <div className="overflow-hidden h-52">
@@ -130,7 +128,8 @@ const Blog = ({ orderPopup, handleOrderPopup }) => {
                   {blog.subtitle}
                 </p>
                 <p className="text-xs text-gray-400 pt-1">
-                  {blog.published} · by <span className="font-medium">{blog.author}</span>
+                  {blog.published} · by{" "}
+                  <span className="font-medium">{blog.author}</span>
                 </p>
               </div>
             </div>
@@ -146,4 +145,3 @@ const Blog = ({ orderPopup, handleOrderPopup }) => {
 };
 
 export default Blog;
-
